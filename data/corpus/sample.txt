@@ -1,0 +1,19 @@
+This project is a vector database built from scratch in Python, paired with
+a retrieval-augmented generation pipeline. The vector database supports
+inserting embeddings with metadata, searching for nearest neighbors using
+cosine similarity, and filtering results by metadata fields. The initial
+version uses a brute-force flat index that compares a query vector against
+every stored vector using vectorized numpy operations.
+
+The retrieval-augmented generation pipeline chunks source documents into
+overlapping windows, embeds each chunk locally using a small sentence
+transformer model, and stores the resulting vectors in the vector database
+alongside the original chunk text. When a user asks a question, the
+question is embedded with the same model, the most similar chunks are
+retrieved from the database, and those chunks are passed as context to the
+Gemini API to generate a grounded answer.
+
+Future work includes adding an inverted-file (IVF) index for approximate
+nearest neighbor search at larger scale, write-ahead-log based persistence
+so the database survives restarts, and an evaluation harness that measures
+retrieval recall and answer faithfulness across different configurations.
