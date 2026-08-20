@@ -17,7 +17,7 @@ class FlatIndex:
     def build(self, vectors: np.ndarray, ids: list[str]) -> None:
         self._ids = []
         self._id_to_row = {}
-        self._vectors = np.empty((0,self.dim),dtyoe=np.float32)
+        self._vectors = np.empty((0,self.dim),dtype=np.float32)
         self.add(vectors, ids)
 
     def add(self, vectors: np.ndarray, ids: list[str]) -> None:

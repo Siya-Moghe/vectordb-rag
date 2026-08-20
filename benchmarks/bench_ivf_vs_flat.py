@@ -58,12 +58,6 @@ def run_benchmark(n_vectors=5000, dim=64, k=10, nlist=50, nprobe_values=(1, 4, 8
 
         print(f"{nprobe:>8} | {avg_recall:>10.1%} | {ivf_time*1000/n_queries:>10.3f} | {speedup:>7.2f}x")
 
-    print(
-        "\nExpect: recall climbs toward 100% as nprobe -> nlist (checking more "
-        "clusters = closer to exhaustive search). Speedup shrinks the same "
-        "direction, since nprobe=nlist means you're checking everything -- "
-        "same amount of work as FlatIndex, just with clustering overhead on top."
-    )
 
 
 if __name__ == "__main__":

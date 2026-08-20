@@ -35,7 +35,7 @@ class IVFIndex:
         self._id_to_cluster = {}
 
         for cluster_idx in range(n_clusters):
-            rows = np.where(assignments == cluster_idx)
+            rows = np.where(assignments == cluster_idx)[0]
             """
             say assignments is [2,0,2,1,0,2] that means, vector 0 is cluster 2, vector 1 is in cluster 0 and so on
             so if assignments is equal to cluster index (say 2), we get an answer like [T,F,T,F,F,T]
